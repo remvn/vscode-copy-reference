@@ -1,6 +1,10 @@
 {
   "name": "vscode-copy-reference",
   "displayName": "Copy Reference",
+  "publisher": "remvn",
+  "author": {
+    "name": "remvn"
+  },
   "description": "A VSCode extension to copy file and line reference",
   "version": "0.0.1",
   "engines": {
