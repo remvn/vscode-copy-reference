@@ -1,9 +1,9 @@
-import * as vscode from 'vscode';
-import { formatReference, Selection } from './format';
+import * as vscode from "vscode";
+import { formatReference, Selection } from "./format";
 
 export function activate(context: vscode.ExtensionContext) {
     const disposable = vscode.commands.registerCommand(
-        'copy-reference.copy',
+        "copy-reference.copy",
         async (uri?: vscode.Uri) => {
             let targetUri: vscode.Uri | undefined = uri;
             let sel: Selection | undefined;
@@ -23,12 +23,14 @@ export function activate(context: vscode.ExtensionContext) {
                 };
             }
 
+            console.log();
+
             const relPath = vscode.workspace.asRelativePath(targetUri, false);
             const ref = formatReference(relPath, sel);
 
             await vscode.env.clipboard.writeText(ref);
             vscode.window.setStatusBarMessage(`Copied: ${ref}`, 3000);
-        }
+        },
     );
 
     context.subscriptions.push(disposable);

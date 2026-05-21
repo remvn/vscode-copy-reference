@@ -6,9 +6,12 @@ export interface Selection {
 }
 
 export function formatReference(relPath: string, sel?: Selection): string {
-    const normalized = relPath.replace(/\\/g, '/');
+    const normalized = relPath.replace(/\\/g, "/");
 
-    if (!sel || (sel.startLine === sel.endLine && sel.startCol === sel.endCol)) {
+    if (
+        !sel ||
+        (sel.startLine === sel.endLine && sel.startCol === sel.endCol)
+    ) {
         return `@${normalized}`;
     }
 
