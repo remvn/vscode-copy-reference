@@ -1,6 +1,6 @@
 {
   "name": "copy-reference",
-  "displayName": "copy-reference",
+  "displayName": "Copy Reference",
   "description": "An extension to copy file and line reference",
   "version": "0.0.1",
   "engines": {

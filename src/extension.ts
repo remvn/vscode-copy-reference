@@ -4,16 +4,23 @@ import { formatReference, Selection } from "./format";
 export function activate(context: vscode.ExtensionContext) {
     const disposable = vscode.commands.registerCommand(
         "copy-reference.copy",
+        // uri is provided when invoked from the context menu, undefined when invoked via keyboard shortcut
         async (uri?: vscode.Uri) => {
             let targetUri: vscode.Uri | undefined = uri;
             let sel: Selection | undefined;
+            const editor = vscode.window.activeTextEditor;
 
             if (!targetUri) {
-                const editor = vscode.window.activeTextEditor;
                 if (!editor) {
                     return;
                 }
                 targetUri = editor.document.uri;
+            }
+
+            if (
+                editor &&
+                editor.document.uri.toString() === targetUri.toString()
+            ) {
                 const s = editor.selection;
                 sel = {
                     startLine: s.start.line,
@@ -22,8 +29,6 @@ export function activate(context: vscode.ExtensionContext) {
                     endCol: s.end.character,
                 };
             }
-
-            console.log();
 
             const relPath = vscode.workspace.asRelativePath(targetUri, false);
             const ref = formatReference(relPath, sel);
