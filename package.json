@@ -6,7 +6,7 @@
     "name": "remvn"
   },
   "description": "A VSCode extension to copy file and line reference",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.120.0"
   },
@@ -21,29 +21,43 @@
   "contributes": {
     "commands": [
       {
-        "command": "copy-reference.copy",
-        "title": "Copy Reference",
+        "command": "copy-reference.copyRel",
+        "title": "Copy Reference (Rel)",
+        "category": "Copy Reference"
+      },
+      {
+        "command": "copy-reference.copyAbs",
+        "title": "Copy Reference (Abs)",
         "category": "Copy Reference"
       }
     ],
     "menus": {
       "editor/context": [
         {
-          "command": "copy-reference.copy",
-          "group": "9_cutcopypaste",
+          "command": "copy-reference.copyRel",
+          "group": "9_cutcopypaste@-2",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "copy-reference.copyAbs",
+          "group": "9_cutcopypaste@-1",
           "when": "editorTextFocus"
         }
       ],
       "explorer/context": [
         {
-          "command": "copy-reference.copy",
-          "group": "6_copypath"
+          "command": "copy-reference.copyRel",
+          "group": "6_copypath@-2"
+        },
+        {
+          "command": "copy-reference.copyAbs",
+          "group": "6_copypath@-1"
         }
       ]
     },
     "keybindings": [
       {
-        "command": "copy-reference.copy",
+        "command": "copy-reference.copyRel",
         "key": "ctrl+alt+c",
         "mac": "cmd+alt+c",
         "when": "editorTextFocus"
