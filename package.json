@@ -48,7 +48,22 @@
         "mac": "cmd+alt+c",
         "when": "editorTextFocus"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Copy Reference",
+      "properties": {
+        "copyReference.format": {
+          "type": "string",
+          "enum": [
+            "mention",
+            "plain",
+            "markdown"
+          ],
+          "default": "mention",
+          "description": "Controls the copied file reference format."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "bun run package",

@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { formatReference, Selection } from "./format";
+import { formatReference, ReferenceFormat, Selection } from "./format";
 
 export function activate(context: vscode.ExtensionContext) {
     const disposable = vscode.commands.registerCommand(
@@ -31,7 +31,10 @@ export function activate(context: vscode.ExtensionContext) {
             }
 
             const relPath = vscode.workspace.asRelativePath(targetUri, false);
-            const ref = formatReference(relPath, sel);
+            const format = vscode.workspace
+                .getConfiguration("copyReference")
+                .get<ReferenceFormat>("format", "mention");
+            const ref = formatReference(relPath, sel, format);
 
             await vscode.env.clipboard.writeText(ref);
             vscode.window.setStatusBarMessage(`Copied: ${ref}`, 3000);

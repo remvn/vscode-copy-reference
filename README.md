@@ -25,6 +25,16 @@ Copy a file or line reference to the clipboard in `@path/to/file` format:
 
 A status bar message confirms what was copied.
 
+## Settings
+
+`copyReference.format` controls the copied reference format:
+
+| Value | Example |
+|-------|---------|
+| `mention` | `@src/index.js#L10-20` |
+| `plain` | `src/index.js:10-20` |
+| `markdown` | `` `src/index.js:10-20` `` |
+
 ## Requirements
 
 VS Code 1.120.0 or later.
