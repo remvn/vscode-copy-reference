@@ -6,7 +6,7 @@
     "name": "remvn"
   },
   "description": "A VSCode extension to copy file and line reference",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.120.0"
   },
